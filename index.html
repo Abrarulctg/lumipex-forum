@@ -5,13 +5,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumipex - Forum</title>
+
+    <!-- DaisyUI & Tailwind Css-->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- font Awesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
     <!-- Header Section -->
-    <header>
+    <header class="max-w-7xl mx-auto">
         <!-- Navbar -->
+        <div>
+            <div class="navbar bg-base-100">
+                <div class="flex-1">
+                    <a class="btn btn-ghost text-xl">Lumipex</a>
+                </div>
+                <div class="flex-none">
+                    <ul class="menu menu-horizontal gap-2">
+                        <li><a title="Home" class="border rounded-full w-10 h-10 p-3"><i
+                                    class="fa-solid fa-house"></i></a>
+                        </li>
+                        <li><a title="Create Blog" class="border  rounded-full w-10 h-10 p-3"><i
+                                    class="fa-solid fa-pen"></i></a></li>
+                        <li><a title="Add User" class="border  rounded-full w-10 h-10 p-3"><i
+                                    class="fa-solid fa-user-plus"></i></a>
+                        </li>
+                        <li><a title="Language" class="border  rounded-full w-10 h-10 p-3"><i
+                                    class="fa-regular fa-flag"></i></a></li>
 
+                    </ul>
+                </div>
+                <div><button class="btn btn-primary rounded-full px-7">Sign in</button></div>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="bg-[./images/bgbanner.png]">
+            <div class="flex">
+                <div>
+                    <h1 class="text-[64px] font-extrabold">Welcome to the <span class="text-purple-700">Lumipex</span>
+                        Forum</h1>
+                    <p>Share your favorite opinion and win and wp forum coffee mug!</p>
+
+                </div>
+                <div>
+                    <div class="flex justify-between">
+                        <h5>Registered Users</h5>
+                        <h5>01</h5>
+                    </div>
+                    <div class="flex justify-between">
+                        <h5>Forum</h5>
+                        <h5>05</h5>
+                    </div>
+                    <div class="flex justify-between">
+                        <h5>Topics</h5>
+                        <h5>01</h5>
+                    </div>
+                    <div class="flex justify-between">
+                        <h5>Replies</h5>
+                        <h5>01</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
     <!-- Main Section -->
@@ -23,6 +82,8 @@
     <footer>
 
     </footer>
+
+    <script src="./js/lumipex-script.js"></script>
 </body>
 
 </html>
