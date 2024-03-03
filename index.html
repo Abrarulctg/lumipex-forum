@@ -21,7 +21,7 @@
         <div>
             <div class="navbar bg-base-100">
                 <div class="flex-1">
-                    <a class="btn btn-ghost text-xl">Lumipex</a>
+                    <a class="btn btn-ghost text-xl lg:text-3xl font-extrabold">Lumipex</a>
                 </div>
                 <div class="flex-none">
                     <ul class="menu menu-horizontal gap-2">
@@ -43,33 +43,50 @@
         </div>
 
         <!-- Banner -->
-        <div class="bg-[./images/bgbanner.png]">
-            <div class="flex">
-                <div>
-                    <h1 class="text-[64px] font-extrabold">Welcome to the <span class="text-purple-700">Lumipex</span>
-                        Forum</h1>
-                    <p>Share your favorite opinion and win and wp forum coffee mug!</p>
-
-                </div>
-                <div>
-                    <div class="flex justify-between">
-                        <h5>Registered Users</h5>
-                        <h5>01</h5>
+        <div class="hero max-w-6xl mx-auto rounded-3xl bg-[#12132D] bg-[url(./images/bgbanner.png)] ">
+            <div class="hero-content flex-col lg:flex-row p-20">
+                <div class="flex flex-col lg:flex-row justify-between gap-6 items-center">
+                    <div class="w-7/12">
+                        <h1 class="text-[64px] text-white font-extrabold">Welcome to the <span
+                                class="text-purple-500">Lumipex</span>
+                            Forum</h1>
+                        <p class="text-gray-200 text-xl mb-8">Share your favorite opinion and win and wp forum coffee
+                            mug!
+                        </p>
+                        <div class="relative max-w-xs">
+                            <input type="text" placeholder="Search here anything"
+                                class="input input-bordered w-full rounded-full" />
+                            <button
+                                class="btn rounded-full absolute right-0 font-bold bg-[#797DFC] hover:bg-[#4b51fb] text-white">Search</button>
+                        </div>
                     </div>
-                    <div class="flex justify-between">
-                        <h5>Forum</h5>
-                        <h5>05</h5>
-                    </div>
-                    <div class="flex justify-between">
-                        <h5>Topics</h5>
-                        <h5>01</h5>
-                    </div>
-                    <div class="flex justify-between">
-                        <h5>Replies</h5>
-                        <h5>01</h5>
+                    <div class="w-5/12 ">
+                        <div class="w-72 bg-white p-10 rounded-xl">
+                            <div class="flex justify-between mb-3 font-semibold">
+                                <h5>Registered Users</h5>
+                                <h5>01</h5>
+                            </div>
+                            <div class="flex justify-between mb-3 font-semibold">
+                                <h5>Forum</h5>
+                                <h5>05</h5>
+                            </div>
+                            <div class="flex justify-between mb-3 font-semibold">
+                                <h5>Topics</h5>
+                                <h5>01</h5>
+                            </div>
+                            <div class="flex justify-between mb-3 font-semibold">
+                                <h5>Replies</h5>
+                                <h5>01</h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+
+        <div class="bg-red-300 ">
+
         </div>
     </header>
 
