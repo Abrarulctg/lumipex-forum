@@ -19,7 +19,7 @@
     <header class="max-w-7xl mx-auto">
         <!-- Navbar -->
         <div>
-            <div class="navbar bg-base-100">
+            <div class="navbar bg-base-100 mb-6">
                 <div class="flex-1">
                     <a class="btn btn-ghost text-xl lg:text-3xl font-extrabold">Lumipex</a>
                 </div>
@@ -44,9 +44,9 @@
 
         <!-- Banner -->
         <div class="hero max-w-6xl mx-auto rounded-3xl bg-[#12132D] bg-[url(./images/bgbanner.png)] ">
-            <div class="hero-content flex-col lg:flex-row p-20">
+            <div class="hero-content flex-col lg:flex-row p-4 lg:p-20">
                 <div class="flex flex-col lg:flex-row justify-between gap-6 items-center">
-                    <div class="w-7/12">
+                    <div class="w-full lg:w-7/12">
                         <h1 class="text-[64px] text-white font-extrabold">Welcome to the <span
                                 class="text-purple-500">Lumipex</span>
                             Forum</h1>
@@ -60,7 +60,7 @@
                                 class="btn rounded-full absolute right-0 font-bold bg-[#797DFC] hover:bg-[#4b51fb] text-white">Search</button>
                         </div>
                     </div>
-                    <div class="w-5/12 ">
+                    <div class="w-full lg:w-5/12 ">
                         <div class="w-72 bg-white p-10 rounded-xl">
                             <div class="flex justify-between mb-3 font-semibold">
                                 <h5>Registered Users</h5>
@@ -83,16 +83,59 @@
                 </div>
             </div>
         </div>
-
-
-        <div class="bg-red-300 ">
-
-        </div>
     </header>
 
     <!-- Main Section -->
-    <main>
+    <main class="max-w-6xl mx-auto">
+        <!-- Let's Discuss Section -->
+        <section>
+            <!-- section title -->
+            <div class="text-center mt-[100px]">
+                <h1 class="text-[40px] font-extrabold text-[#12132D]">Let’s Discuss</h1>
+                <p class="text-[#12132d99] text-[18px] mb-10">Yes, you can run unit tests and view the results directly
+                    within
+                    the app.
+                    The integrated testing features allow for a streamlined.</p>
+            </div>
 
+            <!-- All Blog Container -->
+            <div>
+                <!-- blogs container -->
+                <div id="blog-container">
+                    <!-- single blog -->
+                    <div class="flex gap-6 bg-[#797dfc1a] border border-[#797DFC] p-10 rounded-3xl">
+                        <!-- blog-Author Image -->
+                        <div>
+                            <!-- The div below will be replaced by blog author img -->
+                            <div class="bg-white w-12 h-12">
+                                <p>2345</p>
+                            </div>
+                        </div>
+                        <!-- blog details -->
+                        <div>
+                            <div class="flex text-[14px] font-[500] mb-3">
+                                <p class="mr-10"># <span>Music</span></p>
+                                <p>Author: <span>Awlad Hossain</span></p>
+                            </div>
+                            <h1 class="text-xl text-[#12132D] font-bold mb-4">10 Kids Unaware of Their Halloween Costume
+                            </h1>
+                            <p class="text-[#12132d99]">It’s one thing to subject yourself to ha Halloween costume
+                                mishap because, hey that’s your prerogative</p>
+                            <hr class="my-5 border-dashed border-[#12132d40]">
+                            <div class="flex justify-between text-[#12132d96]">
+                                <div class=" flex gap-7 text-base">
+                                    <p><i class="fa-regular fa-message"></i> 560</p>
+                                    <p><i class="fa-regular fa-eye"></i> 1568</p>
+                                    <p><i class="fa-regular fa-clock"></i> 5 min</p>
+                                </div>
+                                <button class="text-[#10B981] text-[20px]"><i
+                                        class="fa-solid fa-envelope-open"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- footer Section -->
