@@ -49,7 +49,12 @@ const displayAllBlog = () => {
             // console.log(data)
             const allBlogs = data.posts;
             // console.log(allBlogs);
-            displayFetchedData(allBlogs);
+            // displayFetchedData(allBlogs);
+            toggleLoadingSpinner(true)
+            setTimeout(function () {
+                displayFetchedData(allBlogs);
+                toggleLoadingSpinner(false)
+            }, 2000);
         })
 }
 
@@ -59,6 +64,7 @@ const displayBlogByCategory = (blogCategory) => {
         .then(response => response.json())
         .then(data => {
             // console.log(data)
+
             const allBlogs = data.posts;
             console.log(allBlogs);
             //Displaying Loading Spinner
@@ -68,9 +74,34 @@ const displayBlogByCategory = (blogCategory) => {
         })
 }
 
+const toggleLoadingSpinner = (isLoading) => {
+    const loadingSpinner = document.getElementById('loading-spinner');
+    if (isLoading === true) {
+        loadingSpinner.classList.remove('hidden');
+    }
+    else {
+        loadingSpinner.classList.add('hidden');
+    }
+}
+
+// const displayBlogByCategory = (blogCategory) => {
+//     const url = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${blogCategory}`
+//     fetch(url)
+//         .then(response => response.json())
+//         .then(data => {
+//             // console.log(data)
+//             const allBlogs = data.posts;
+//             console.log(allBlogs);
+//             //Displaying Loading Spinner
+//             toggleLoadingSpinner(true);
+//             allBlogsContainer.innerHTML = '';
+//             displayFetchedData(allBlogs);
+//         })
+// }
+
 const displayFetchedData = (allBlogs) => {
     for (const blog of allBlogs) {
-        console.log(blog);
+        // console.log(blog);
         const newCard = document.createElement('div');
         newCard.innerHTML = `
             <div class="flex gap-6 bg-[#797dfc1a] border border-[#797DFC] p-10 rounded-3xl mb-4">
@@ -106,8 +137,6 @@ const displayFetchedData = (allBlogs) => {
 }
 // Handling Mark As Read Button
 const handleMarkAsRead = (title, view_count) => {
-    // console.log(title, view_count);
-    // console.log(title);
     const titleText = title.replace("#", '');
     console.log(titleText)
     let markedAsReadCount = document.getElementById('marked-as-read-count');
@@ -168,17 +197,6 @@ const displayLatestPosts = () => {
             }
 
         })
-}
-
-
-const toggleLoadingSpinner = (isLoading) => {
-    const loadingSpinner = document.getElementById('loading-spinner');
-    if (isLoading === true) {
-        loadingSpinner.classList.remove('hidden');
-    }
-    else {
-        loadingSpinner.classList.add('hidden');
-    }
 }
 
 
