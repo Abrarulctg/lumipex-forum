@@ -81,7 +81,7 @@ const displayFetchedData = (allBlogs) => {
                     ${blog.isActive ? greenBadge : redBadge}
                 </div>
                 <!-- blog details -->
-                <div>
+                <div class="w-full">
                     <div class="flex text-[14px] font-[500] mb-3">
                         <p class="mr-10"># <span>${blog.category}</span></p>
                         <p>Author: <span>${blog.author.name}</span></p>
@@ -95,7 +95,7 @@ const displayFetchedData = (allBlogs) => {
                             <p><i class="fa-regular fa-eye"></i> ${blog.view_count}</p>
                             <p><i class="fa-regular fa-clock"></i> ${blog.posted_time} min</p>
                         </div>
-                        <button onclick='handleMarkAsRead("${blog.title}", ${blog.view_count})' class="text-[#10B981] text-[20px]"><i
+                        <button onclick="handleMarkAsRead('${blog.title.replace("'", "#")}', ${blog.view_count})" class="text-[#10B981] text-[20px]"><i
                                 class="fa-solid fa-envelope-open"></i></button>
                     </div>
                 </div>
@@ -104,14 +104,12 @@ const displayFetchedData = (allBlogs) => {
         allBlogsContainer.appendChild(newCard);
     }
 }
-
-
 // Handling Mark As Read Button
 const handleMarkAsRead = (title, view_count) => {
     // console.log(title, view_count);
-    const titleText = toString(title);
+    // console.log(title);
+    const titleText = title.replace("#", '');
     console.log(titleText)
-
     let markedAsReadCount = document.getElementById('marked-as-read-count');
     let markedAsReadCountElement = markedAsReadCount.innerText;
     let markAsReadNumber = parseInt(markedAsReadCountElement);
@@ -124,14 +122,14 @@ const handleMarkAsRead = (title, view_count) => {
     const markAsRead = document.createElement('div');
     markAsRead.innerHTML = `
         <div class="flex justify-between items-center gap-4 bg-white rounded-xl p-4 mb-4">
-            <h1 class="text-base text-[#12132D] font-bold">${title}</h1>
+            <h1 class="text-base text-[#12132D] font-bold">${titleText}</h1>
             <div class="flex items-center text-[#12132d99]">
                 <i class="fa-regular fa-eye mr-2"></i>
                 <p>${view_count}</p>
             </div>
         </div>
     `;
-    markAsReadCounter.appendChild(markAsRead)
+    markAsReadCounter.appendChild(markAsRead);
 }
 
 const displayLatestPosts = () => {
