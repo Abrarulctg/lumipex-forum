@@ -1,3 +1,6 @@
+const allBlogsContainer = document.getElementById('blog-container')
+const latestPostContainer = document.getElementById('latest-post-container')
+
 const handleSearchBtn = () => {
     const searchInputElement = document.getElementById('search-input');
     const searchInput = searchInputElement.value;
@@ -5,7 +8,6 @@ const handleSearchBtn = () => {
     displayBlogByCategory(searchInput);
 }
 
-const allBlogsContainer = document.getElementById('blog-container')
 
 let greenBadge = `<svg class="absolute -top-1 -right-1" width="18.666672" height="18.666748"
 viewBox="0 0 18.6667 18.6667" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -45,41 +47,7 @@ const displayAllBlog = () => {
             // console.log(data)
             const allBlogs = data.posts;
             // console.log(allBlogs);
-
-            for (const blog of allBlogs) {
-                // console.log(blog);
-                const newCard = document.createElement('div');
-                newCard.innerHTML = `
-                    <div class="flex gap-6 bg-[#797dfc1a] border border-[#797DFC] p-10 rounded-3xl mb-4">
-                        <!-- blog-Author Image -->
-                        <div class="relative">
-                            <!-- The div below will be replaced by blog author img -->
-                            <img src="${blog.image}" class="w-[72px] rounded-xl" />
-                            ${blog.isActive ? greenBadge : redBadge}
-                        </div>
-                        <!-- blog details -->
-                        <div>
-                            <div class="flex text-[14px] font-[500] mb-3">
-                                <p class="mr-10"># <span>${blog.category}</span></p>
-                                <p>Author: <span>${blog.author.name}</span></p>
-                            </div>
-                            <h1 class="text-xl text-[#12132D] font-bold mb-4">${blog.title}</h1>
-                            <p class="text-[#12132d99]">${blog.description}</p>
-                            <hr class="my-5 border-dashed border-[#12132d40]">
-                            <div class="flex justify-between text-[#12132d96]">
-                                <div class=" flex gap-7 text-base">
-                                    <p><i class="fa-regular fa-message"> </i> ${blog.comment_count}</p>
-                                    <p><i class="fa-regular fa-eye"></i> ${blog.view_count}</p>
-                                    <p><i class="fa-regular fa-clock"></i> ${blog.posted_time} min</p>
-                                </div>
-                                <button class="text-[#10B981] text-[20px]"><i
-                                        class="fa-solid fa-envelope-open"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                `
-                allBlogsContainer.appendChild(newCard);
-            }
+            displayFetchedData(allBlogs);
         })
 }
 
@@ -88,46 +56,105 @@ const displayBlogByCategory = (blogCategory) => {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             const allBlogs = data.posts;
             console.log(allBlogs);
+            //Displaying Loading Spinner
+            // toggleLoadingSpinner(true);
             allBlogsContainer.innerHTML = '';
-            for (const blog of allBlogs) {
-                // console.log(blog);
-                const newCard = document.createElement('div');
-                newCard.innerHTML = `
-                    <div class="flex gap-6 bg-[#797dfc1a] border border-[#797DFC] p-10 rounded-3xl mb-4">
-                        <!-- blog-Author Image -->
-                        <div class="relative">
-                            <!-- The div below will be replaced by blog author img -->
-                            <img src="${blog.image}" class="w-[72px] rounded-xl" />
-                            ${blog.isActive ? greenBadge : redBadge}
+            displayFetchedData(allBlogs);
+        })
+}
+
+const displayFetchedData = (allBlogs) => {
+    for (const blog of allBlogs) {
+        console.log(blog);
+        const newCard = document.createElement('div');
+        newCard.innerHTML = `
+            <div class="flex gap-6 bg-[#797dfc1a] border border-[#797DFC] p-10 rounded-3xl mb-4">
+                <!-- blog-Author Image -->
+                <div class="relative">
+                    <!-- The div below will be replaced by blog author img -->
+                    <img src="${blog.image}" class="w-[72px] rounded-xl" />
+                    ${blog.isActive ? greenBadge : redBadge}
+                </div>
+                <!-- blog details -->
+                <div>
+                    <div class="flex text-[14px] font-[500] mb-3">
+                        <p class="mr-10"># <span>${blog.category}</span></p>
+                        <p>Author: <span>${blog.author.name}</span></p>
+                    </div>
+                    <h1 class="text-xl text-[#12132D] font-bold mb-4">${blog.title}</h1>
+                    <p class="text-[#12132d99]">${blog.description}</p>
+                    <hr class="my-5 border-dashed border-[#12132d40]">
+                    <div class="flex justify-between text-[#12132d96]">
+                        <div class=" flex gap-7 text-base">
+                            <p><i class="fa-regular fa-message"> </i> ${blog.comment_count}</p>
+                            <p><i class="fa-regular fa-eye"></i> ${blog.view_count}</p>
+                            <p><i class="fa-regular fa-clock"></i> ${blog.posted_time} min</p>
                         </div>
-                        <!-- blog details -->
-                        <div>
-                            <div class="flex text-[14px] font-[500] mb-3">
-                                <p class="mr-10"># <span>${blog.category}</span></p>
-                                <p>Author: <span>${blog.author.name}</span></p>
-                            </div>
-                            <h1 class="text-xl text-[#12132D] font-bold mb-4">${blog.title}</h1>
-                            <p class="text-[#12132d99]">${blog.description}</p>
-                            <hr class="my-5 border-dashed border-[#12132d40]">
-                            <div class="flex justify-between text-[#12132d96]">
-                                <div class=" flex gap-7 text-base">
-                                    <p><i class="fa-regular fa-message"> </i> ${blog.comment_count}</p>
-                                    <p><i class="fa-regular fa-eye"></i> ${blog.view_count}</p>
-                                    <p><i class="fa-regular fa-clock"></i> ${blog.posted_time} min</p>
+                        <button onclick="handleMarkAsRead(${blog.id})" class="text-[#10B981] text-[20px]"><i
+                                class="fa-solid fa-envelope-open"></i></button>
+                    </div>
+                </div>
+            </div>
+        `
+        allBlogsContainer.appendChild(newCard);
+    }
+}
+
+
+
+
+const displayLatestPosts = () => {
+    const url = 'https://openapi.programming-hero.com/api/retro-forum/latest-posts';
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            // console.log(data)
+            for (const singlePost of data) {
+                // console.log(singlePost);
+                const newCard = document.createElement('div')
+                newCard.innerHTML = `
+                <div class="flex justify-center">
+                    <div class="card card-compact w-96 bg-base-100 border shadow-md p-6">
+                        <figure><img src="${singlePost.cover_image}"
+                                alt="Post Cover" />
+                        </figure>
+                        <div class="card-body">
+                            <p class="text-[#12132d99]"><i class="fa-regular fa-calendar-days"></i> ${singlePost.author.posted_date || 'No publish date'}</p>
+                            <h2 class="card-title text-[#12132D] text-[18px] font-bold">${singlePost.title}</h2>
+                            <p class="text-[#12132d99]">${singlePost.description}</p>
+                            <div class="card-actions ">
+                                <div class="flex gap-3">
+                                    <img class="w-12 h-12 rounded-full" src="${singlePost.profile_image}" alt="">
+                                    <div>
+                                        <h2 class="font-[#12132d99] font-bold">${singlePost.author.name}</h2>
+                                        <p class="text-xs">${singlePost.author.designation || "Unknown"}</p>
+                                    </div>
                                 </div>
-                                <button class="text-[#10B981] text-[20px]"><i
-                                        class="fa-solid fa-envelope-open"></i></button>
                             </div>
                         </div>
                     </div>
-                `
-                allBlogsContainer.appendChild(newCard);
+                </div>
+            `
+                latestPostContainer.appendChild(newCard);
             }
+
         })
 }
 
 
+const toggleLoadingSpinner = (isLoading) => {
+    const loadingSpinner = document.getElementById('loading-spinner');
+    if (isLoading === true) {
+        loadingSpinner.classList.remove('hidden');
+    }
+    else {
+        loadingSpinner.classList.add('hidden');
+    }
+}
+
+
 displayAllBlog();
+displayLatestPosts();

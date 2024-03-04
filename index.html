@@ -107,7 +107,12 @@
             <div class="flex gap-4 flex-col lg:flex-row">
                 <!-- blogs container -->
                 <div id="blog-container" class="w-full lg:w-8/12">
-                    <!-- single blog -->
+                    <!-- Spinner/ Loader  -->
+                    <div class="text-center mx-auto">
+                        <span id="loading-spinner"
+                            class="loading loading-spinner loading-lg text-primary hidden"></span>
+                    </div>
+                    <!-- single blog will be added dynamically-->
                 </div>
 
                 <!-- mark as read section head container -->
@@ -177,7 +182,7 @@
             </div>
             <!-- Latest Post Container -->
             <div id="latest-post-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
-                <div class="flex justify-center">
+                <!-- <div class="flex justify-center">
                     <div class="card card-compact w-96 bg-base-100 border shadow-md">
                         <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
                                 alt="Shoes" />
@@ -197,11 +202,10 @@
                                         <p class="text-xs">Unknown</p>
                                     </div>
                                 </div>
-                                <!-- <button class="btn btn-primary">Buy Now</button> -->
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
     </main>
