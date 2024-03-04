@@ -1,5 +1,7 @@
 const allBlogsContainer = document.getElementById('blog-container')
 const latestPostContainer = document.getElementById('latest-post-container')
+const markAsReadCounter = document.getElementById('mark-as-read-container');
+
 
 const handleSearchBtn = () => {
     const searchInputElement = document.getElementById('search-input');
@@ -93,7 +95,7 @@ const displayFetchedData = (allBlogs) => {
                             <p><i class="fa-regular fa-eye"></i> ${blog.view_count}</p>
                             <p><i class="fa-regular fa-clock"></i> ${blog.posted_time} min</p>
                         </div>
-                        <button onclick="handleMarkAsRead(${blog.id})" class="text-[#10B981] text-[20px]"><i
+                        <button onclick='handleMarkAsRead("${blog.title}", ${blog.view_count})' class="text-[#10B981] text-[20px]"><i
                                 class="fa-solid fa-envelope-open"></i></button>
                     </div>
                 </div>
@@ -104,7 +106,33 @@ const displayFetchedData = (allBlogs) => {
 }
 
 
+// Handling Mark As Read Button
+const handleMarkAsRead = (title, view_count) => {
+    // console.log(title, view_count);
+    const titleText = toString(title);
+    console.log(titleText)
 
+    let markedAsReadCount = document.getElementById('marked-as-read-count');
+    let markedAsReadCountElement = markedAsReadCount.innerText;
+    let markAsReadNumber = parseInt(markedAsReadCountElement);
+
+    // Calculate and Updating MarkAsReadCounter
+    markAsReadNumber = markAsReadNumber + 1;
+    markedAsReadCount.innerText = markAsReadNumber;
+
+    // Creating HTML Element on MarkAsRead Section
+    const markAsRead = document.createElement('div');
+    markAsRead.innerHTML = `
+        <div class="flex justify-between items-center gap-4 bg-white rounded-xl p-4 mb-4">
+            <h1 class="text-base text-[#12132D] font-bold">${title}</h1>
+            <div class="flex items-center text-[#12132d99]">
+                <i class="fa-regular fa-eye mr-2"></i>
+                <p>${view_count}</p>
+            </div>
+        </div>
+    `;
+    markAsReadCounter.appendChild(markAsRead)
+}
 
 const displayLatestPosts = () => {
     const url = 'https://openapi.programming-hero.com/api/retro-forum/latest-posts';
